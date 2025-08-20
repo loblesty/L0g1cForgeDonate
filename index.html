@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L0g1cForge | Донати</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" href ="images/icon.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      margin: 0;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #db2777;
+      margin-bottom: 0.5rem;
+    }
+    .avatar {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .avatar:hover {
+      transform: scale(1.05);
+    }
+    section {
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    }
+    .button, button {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    button {
+      background: #db2777;
+      color: white;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: #be185d;
+    }
+    .button {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .button i {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      vertical-align: middle;
+      transition: transform 0.3s;
+    }
+    .button:hover i {
+      transform: rotate(15deg);
+    }
+    .youtube { background: #ff0000; color: white; }
+    .youtube:hover { background: #cc0000; }
+    .discord { background: #5865f2; color: white; }
+    .discord:hover { background: #4752c4; }
+    .donate { background: #00c853; color: white; }
+    .donate:hover { background: #009624; }
+    .number {
+      font-family: monospace;
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      background: #f8fafc;
+      color: #1e293b;
+      border-radius: 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .number:hover { transform: scale(1.05); }
+    .qr { margin-top: 1rem; animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/avatar.png" alt="L0g1cForge" class="avatar">
+    <h1>L0g1cForge</h1>
+    <p>Програміст та стрімер 💻🎮</p>
+  </header>
+
+  <section>
+    <h2>Мої соцмережі</h2>
+    <a class="button youtube" href="https://youtube.com/@твій_канал" target="_blank">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+    <a class="button discord" href="https://discord.gg/твій_сервер" target="_blank">
+      <i class="fab fa-discord"></i> Discord
+    </a>
+  </section>
+
+  <section>
+    <h2>Підтримай мене донатом</h2>
+    <div class="number" id="card-number">5375 0000 0000 0000</div>
+    <div>
+      <button onclick="copyCard()">📋 Скопіювати</button>
+      <a id="mono-link" class="button donate" target="_blank">💳 Відкрити в Monobank</a>
+    </div>
+    <div class="qr">
+      <canvas id="qrcode"></canvas>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> L0g1cForge</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script>
+    const cardNumber = "5375000000000000"; // встав свій номер
+    document.getElementById("mono-link").href = "https://send.monobank.ua/" + cardNumber;
+
+    function copyCard() {
+      navigator.clipboard.writeText(cardNumber)
+        .then(() => alert("Номер картки скопійовано!"))
+        .catch(() => alert("Не вдалося скопіювати :("));
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // QR-код
+    new QRious({
+      element: document.getElementById('qrcode'),
+      value: "https://send.monobank.ua/" + cardNumber,
+      size: 180
+    });
+  </script>
+
+</body>
+</html>
