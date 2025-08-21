@@ -137,8 +137,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script>
-    const cardNumber = "jar/8vPm2g2RFd"; // встав свій номер
-    document.getElementById("mono-link").href = "https://send.monobank.ua/" + cardNumber;
+    const UrlAdress = "jar/8vPm2g2RFd"; // встав свій номер
+    document.getElementById("mono-link").href = "https://send.monobank.ua/" + UrlAdress;
 
     const cardNumber = "4441 1144 3447 7103";
 
@@ -153,13 +153,14 @@
     // QR-код
     new QRious({
       element: document.getElementById('qrcode'),
-      value: "https://send.monobank.ua/" + cardNumber,
+      value: "https://send.monobank.ua/jar/8vPm2g2RFd",
       size: 180
     });
   </script>
 
 </body>
 </html>
+
 
 
 
